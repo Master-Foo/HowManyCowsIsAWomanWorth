@@ -22,3 +22,7 @@ docs/
 
 # Code coverage
 *.lst
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
