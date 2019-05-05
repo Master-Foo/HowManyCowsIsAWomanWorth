@@ -68,32 +68,22 @@ struct Subject{
 
     float calculate_fertility(){
         //https://www.singstat.gov.sg/modules/infographics/total-fertility-rate
-        int modifier = 10;
-        float value = 0;
-        float min = 15;
-        float max = 49;
+        
+        double modifier = 10;
+        double value = 0;
+        double ageArray[8] = {49, 45, 40, 35, 30, 25, 20, 15}
+        double bptArray[8] = {0, 0.005, 0.088, 0.484, 0.930, 0.608, 0.145, 0.026}
 
-        if(this.age < 15){
-            value = 0;
-        }else if(this.age >= 15 && this.age <= 19){
-            value = .026;
-        }else if(this.age >= 20 && this.age <= 24){
-            value = .145;
-        }else if(this.age >= 25 && this.age <= 29){
-            value = .608;
-        }else if(this.age >= 30 && this.age <= 34){
-            value = .93;
-        }else if(this.age >= 35 && this.age <= 39){
-            value = .484;
-        }else if(this.age >= 40 && this.age <= 44){
-            value = .088;
-        }else if(this.age >= 45 && this.age <= 49){
-            value = .005;
-        }else{
-            value = 0;
-        }
+        if (this.age < ageArray[7] || this.age > ageArray[0]) value = bptArray[0];
+        else if (this.age >= ageArray[1]) value = bptArray[1];   
+        else if (this.age >= ageArray[2]) value = bptArray[2];   
+        else if (this.age >= ageArray[3]) value = bptArray[3];   
+        else if (this.age >= ageArray[4]) value = bptArray[4];   
+        else if (this.age >= ageArray[5]) value = bptArray[5];   
+        else if (this.age >= ageArray[6]) value = bptArray[6];   
+        else value = bptArray[7];
 
-        return value * modifier;
+        return (float)(value * modifier);
     }
 
     float calculate_hotness(){
