@@ -35,7 +35,7 @@ Subject[] test_subjects = [
         divorces: 0
     },
     {
-        name: "Y",
+        name: "Tanisha",
         age: 25,
         children: -5,
         hotness: 7,
