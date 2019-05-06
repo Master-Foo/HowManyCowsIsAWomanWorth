@@ -3,6 +3,9 @@ module subject;
 import std.conv;
 import std.format;
 import std.math;
+import std.stdio;
+
+import total_fertility_rate;
 
 struct Subject{
     string  name            = "";
@@ -26,21 +29,12 @@ struct Subject{
     }
 
     float calculate_fertility(){
-        //https://www.singstat.gov.sg/modules/infographics/total-fertility-rate
-
         double modifier = 10;
         double value = 0;
-        double[8] ageArray = [49, 45, 40, 35, 30, 25, 20, 15];
-        double[8] bptArray = [0, 0.005, 0.088, 0.484, 0.930, 0.608, 0.145, 0.026];
 
-        if (this.age < ageArray[7] || this.age > ageArray[0]) value = bptArray[0];
-        else if (this.age >= ageArray[1]) value = bptArray[1];
-        else if (this.age >= ageArray[2]) value = bptArray[2];
-        else if (this.age >= ageArray[3]) value = bptArray[3];
-        else if (this.age >= ageArray[4]) value = bptArray[4];
-        else if (this.age >= ageArray[5]) value = bptArray[5];
-        else if (this.age >= ageArray[6]) value = bptArray[6];
-        else value = bptArray[7];
+        value = total_fertility_rate.get_fertility_rate(this.age);
+
+        //TODO: Normalize value
 
         return to!float(value * modifier);
     }
